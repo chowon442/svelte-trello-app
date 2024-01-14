@@ -3,7 +3,7 @@
 
 - 모듈 문제  
 ES 모듈을 사용할 때, __dirname을 사용하면 ReferenceError가 생긴다.  
-CommonJS에서 사용하던 __dirname 변수가 ES 모듈에서는 없기 떄문에 발생하는 에러.  
+CommonJS에서 사용하던 __dirname 변수가 ES 모듈에서는 없기 때문에 발생하는 에러.  
 ```javascript
 // 대체 코드
 const __dirname = path.resolve();
