@@ -9,6 +9,9 @@ import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess'
 import autoprefixer from 'autoprefixer'
+import builtins from 'rollup-plugin-node-builtins';
+import globals from 'rollup-plugin-node-globals';
+import replace from "rollup-plugin-replace"
 
 const __dirname = path.resolve();
 
@@ -61,6 +64,12 @@ export default {
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
 
+		replace({
+			values: {
+				'crypto.randomBytes': 'require("randombytes")'
+			}
+		}),
+
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -
@@ -72,6 +81,8 @@ export default {
 			exportConditions: ['svelte']
 		}),
 		commonjs(),
+		globals(),
+		builtins(),
 
 		alias({
 			entries: [

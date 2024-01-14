@@ -1,3 +1,7 @@
+<script>
+    import { lists } from "~/store/list"
+</script>
+
 <div class="create-list">+ Add another list</div>
 
 <style lang="scss">
